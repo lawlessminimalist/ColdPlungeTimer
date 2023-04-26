@@ -14,4 +14,5 @@ struct IcePlungeTimerApp: App {
             ContentView()
         }
     }
+    
 }
