@@ -14,8 +14,11 @@
 		695FFFC529F4DE770054534E /* IcePlungeTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FFFC429F4DE770054534E /* IcePlungeTimerTests.swift */; };
 		695FFFCF29F4DE770054534E /* IcePlungeTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FFFCE29F4DE770054534E /* IcePlungeTimerUITests.swift */; };
 		695FFFD129F4DE770054534E /* IcePlungeTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FFFD029F4DE770054534E /* IcePlungeTimerUITestsLaunchTests.swift */; };
-		6991EEBF29F939120021B752 /* IcebergDynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EEBE29F939120021B752 /* IcebergDynamic.swift */; };
-		6991EECA29F9E4BC0021B752 /* CosineWaveLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EEC929F9E4BC0021B752 /* CosineWaveLine.swift */; };
+		6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EEBE29F939120021B752 /* IcebergDynamicView.swift */; };
+		6991EECA29F9E4BC0021B752 /* CosineWaveLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EEC929F9E4BC0021B752 /* CosineWaveLineView.swift */; };
+		6991EECC29FA14190021B752 /* PlungeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EECB29FA14190021B752 /* PlungeTimerView.swift */; };
+		6991EED229FA1BD60021B752 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EED129FA1BD60021B752 /* TimerView.swift */; };
+		6991EED429FA20590021B752 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EED329FA20590021B752 /* TimerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +49,11 @@
 		695FFFCA29F4DE770054534E /* IcePlungeTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcePlungeTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		695FFFCE29F4DE770054534E /* IcePlungeTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcePlungeTimerUITests.swift; sourceTree = "<group>"; };
 		695FFFD029F4DE770054534E /* IcePlungeTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcePlungeTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		6991EEBE29F939120021B752 /* IcebergDynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcebergDynamic.swift; sourceTree = "<group>"; };
-		6991EEC929F9E4BC0021B752 /* CosineWaveLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosineWaveLine.swift; sourceTree = "<group>"; };
+		6991EEBE29F939120021B752 /* IcebergDynamicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcebergDynamicView.swift; sourceTree = "<group>"; };
+		6991EEC929F9E4BC0021B752 /* CosineWaveLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosineWaveLineView.swift; sourceTree = "<group>"; };
+		6991EECB29FA14190021B752 /* PlungeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeTimerView.swift; sourceTree = "<group>"; };
+		6991EED129FA1BD60021B752 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		6991EED329FA20590021B752 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +104,6 @@
 		695FFFB229F4DE750054534E /* IcePlungeTimer */ = {
 			isa = PBXGroup;
 			children = (
-				6991EEBB29F938760021B752 /* Helpers */,
 				695FFFB329F4DE750054534E /* IcePlungeTimerApp.swift */,
 				6991EEBA29F938560021B752 /* Views */,
 				695FFFB729F4DE770054534E /* Assets.xcassets */,
@@ -135,6 +140,8 @@
 		6991EEBA29F938560021B752 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6991EECE29FA1B970021B752 /* Screens */,
+				6991EEBB29F938760021B752 /* Helpers */,
 				6991EEC829F9E49C0021B752 /* Iceberg */,
 				695FFFB529F4DE750054534E /* ContentView.swift */,
 			);
@@ -144,6 +151,8 @@
 		6991EEBB29F938760021B752 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6991EED129FA1BD60021B752 /* TimerView.swift */,
+				6991EED329FA20590021B752 /* TimerModel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -151,10 +160,18 @@
 		6991EEC829F9E49C0021B752 /* Iceberg */ = {
 			isa = PBXGroup;
 			children = (
-				6991EEBE29F939120021B752 /* IcebergDynamic.swift */,
-				6991EEC929F9E4BC0021B752 /* CosineWaveLine.swift */,
+				6991EEBE29F939120021B752 /* IcebergDynamicView.swift */,
+				6991EEC929F9E4BC0021B752 /* CosineWaveLineView.swift */,
 			);
 			path = Iceberg;
+			sourceTree = "<group>";
+		};
+		6991EECE29FA1B970021B752 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6991EECB29FA14190021B752 /* PlungeTimerView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,10 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6991EEBF29F939120021B752 /* IcebergDynamic.swift in Sources */,
+				6991EED229FA1BD60021B752 /* TimerView.swift in Sources */,
+				6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */,
+				6991EECC29FA14190021B752 /* PlungeTimerView.swift in Sources */,
 				695FFFB629F4DE750054534E /* ContentView.swift in Sources */,
+				6991EED429FA20590021B752 /* TimerModel.swift in Sources */,
 				695FFFB429F4DE750054534E /* IcePlungeTimerApp.swift in Sources */,
-				6991EECA29F9E4BC0021B752 /* CosineWaveLine.swift in Sources */,
+				6991EECA29F9E4BC0021B752 /* CosineWaveLineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

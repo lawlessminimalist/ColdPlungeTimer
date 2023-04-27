@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        IcebergDynamic()
+        IcebergDynamicView()
             .frame(width: 300,height: 300)
     }
 

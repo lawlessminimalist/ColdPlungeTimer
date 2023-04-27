@@ -10,7 +10,7 @@ import SwiftUI
 
 
 
-struct IcebergDynamic: View {
+struct IcebergDynamicView: View {
     var frameHeight = 300.0
 
     var body: some View {
@@ -30,6 +30,6 @@ struct IcebergDynamic: View {
 
 struct IcebergDynamic_Previews: PreviewProvider {
     static var previews: some View {
-        IcebergDynamic()
+        IcebergDynamicView()
     }
 }
