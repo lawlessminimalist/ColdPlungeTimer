@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        IcebergDynamicView()
-            .frame(width: 300,height: 300)
+        TimerInitView()
     }
 
 }
@@ -22,5 +21,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(TimerModel())
     }
 }

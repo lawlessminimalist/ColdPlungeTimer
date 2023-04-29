@@ -7,19 +7,27 @@
 
 import SwiftUI
 
-struct PlungeTimer: View {
+struct PlungeTimerView: View {
+    @EnvironmentObject var timerModel: TimerModel
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private let width: Double = 250
+
     var body: some View {
         VStack{
             IcebergDynamicView()
-            TimerView()
-            
+            TimerView().onAppear(perform:{timerModel.start(seconds:timerModel.seconds)})
+        }.onReceive(timer){_ in
+            timerModel.updateCountdown()
         }
 
     }
 }
 
-struct PlungeTimer_Previews: PreviewProvider {
+struct PlungeTimerView_Previews: PreviewProvider {
+    static var timerModel = TimerModel()
+
     static var previews: some View {
-        PlungeTimer()
+        PlungeTimerView()
+            .environmentObject(timerModel)
     }
 }

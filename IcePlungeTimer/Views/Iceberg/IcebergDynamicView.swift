@@ -22,7 +22,13 @@ struct IcebergDynamicView: View {
                 .overlay(
                     CosineWaveLineView()
                         .padding()
-                        //.offset(y: ((frameHeight - 100) / 2))
+                )
+                .background(
+                    CosineWaveLineView()
+                        .padding()
+                        .offset(y: -30)
+
+                        
                 )
         }
         

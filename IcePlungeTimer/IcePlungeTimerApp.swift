@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
 @main
 struct IcePlungeTimerApp: App {
+    @StateObject private var timerModel = TimerModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(timerModel)
         }
     }
     
