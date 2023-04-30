@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TimerInitView: View {
     @EnvironmentObject var timerModel: TimerModel
+    @State var inTimer = false
+    
     private let width: Double = 250
     
     var body: some View {
@@ -41,9 +43,7 @@ struct TimerInitView: View {
                         timerModel.quickSet(mins: 5.0)
                     }
                 }
-                NavigationLink{
-                    PlungeTimerView()
-                }label:{
+                NavigationLink(destination: PlungeTimerView().environmentObject(timerModel),isActive: $inTimer, label:{
                     Text("Start")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -53,6 +53,13 @@ struct TimerInitView: View {
                                 .fill(Color.blue.opacity(0.7))
                         )
                         
+                } )
+                .onChange(of: inTimer) { isActive in
+                    if !isActive {
+                        // Reset the state when navigating back
+                        timerModel.reset()
+                    }
+
                 }
             }
             

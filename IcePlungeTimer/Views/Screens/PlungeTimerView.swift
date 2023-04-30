@@ -15,8 +15,14 @@ struct PlungeTimerView: View {
     var body: some View {
         VStack{
             IcebergDynamicView()
-            TimerView().onAppear(perform:{timerModel.start(seconds:timerModel.seconds)})
-        }.onReceive(timer){_ in
+            TimerView()
+        }
+        .onAppear(perform:{
+            timerModel.start(seconds:timerModel.seconds)
+            timerModel.updateCountdown()
+
+        })
+        .onReceive(timer){_ in
             timerModel.updateCountdown()
         }
 

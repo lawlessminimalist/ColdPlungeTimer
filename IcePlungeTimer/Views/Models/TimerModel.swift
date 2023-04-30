@@ -11,7 +11,7 @@ final class TimerModel: ObservableObject{
     @Published var isActive = false
     @Published var showingAlert = false
     @Published var time: String = "5:00"
-    @Published var seconds: Float = 320.0 {
+    @Published var seconds: Float = 300 {
         didSet{
             self.minutes = floor(seconds/60)
             let temp_secs = (Int(seconds)%60)
@@ -20,6 +20,7 @@ final class TimerModel: ObservableObject{
         }
     }
     @Published var timediff = 0
+    
     
     private var minutes:Float = 5.0
     private var initialTime = 0
@@ -33,9 +34,9 @@ final class TimerModel: ObservableObject{
     }
     
     func reset(){
-        self.minutes = Float(initialTime)
+        self.seconds = Float(initialTime)
         self.isActive = false
-        self.time = "\(Int(minutes)):00"
+        self.time = "\(Int(minutes)):\(Int(seconds)%60)"
     }
     
     func quickSet(mins:Float){

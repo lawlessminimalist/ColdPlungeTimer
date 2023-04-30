@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "95CB9DB3-A133-4B66-9556-90B2FE781A10"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37B729C2-26B1-498E-A460-54AAD597C2D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IcePlungeTimer/Views/Screens/PlungeTimerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "PlungeTimerView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "37B729C2-26B1-498E-A460-54AAD597C2D5 - e77cacb6ea21edb9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IcePlungeTimer.PlungeTimerView.timerModel.getter : IcePlungeTimer.TimerModel"
+                  moduleName = "IcePlungeTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dlaw/Documents/GitHub/ColdPlungeApplication/IcePlungeTimer/IcePlungeTimer/Views/Screens/PlungeTimerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "37B729C2-26B1-498E-A460-54AAD597C2D5 - 26153288331329c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IcePlungeTimer.PlungeTimerView.$timerModel.getter : SwiftUI.EnvironmentObject&lt;IcePlungeTimer.TimerModel&gt;.Wrapper"
+                  moduleName = "IcePlungeTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dlaw/Documents/GitHub/ColdPlungeApplication/IcePlungeTimer/IcePlungeTimer/Views/Screens/PlungeTimerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "37B729C2-26B1-498E-A460-54AAD597C2D5 - 3e834d8440d8cfbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IcePlungeTimer.PlungeTimerView.init() -&gt; IcePlungeTimer.PlungeTimerView"
+                  moduleName = "IcePlungeTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dlaw/Documents/GitHub/ColdPlungeApplication/IcePlungeTimer/IcePlungeTimer/Views/Screens/PlungeTimerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "37B729C2-26B1-498E-A460-54AAD597C2D5 - d9ae67eae2cfa0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IcePlungeTimer.PlungeTimerView.init(seconds: Swift.Float) -&gt; IcePlungeTimer.PlungeTimerView"
+                  moduleName = "IcePlungeTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dlaw/Documents/GitHub/ColdPlungeApplication/IcePlungeTimer/IcePlungeTimer/Views/Screens/PlungeTimerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
