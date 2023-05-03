@@ -37,13 +37,13 @@ struct CosineWaveLine: Shape {
 
 
 struct CosineWaveLineView: View {
-    @State private var phase: CGFloat = 0
+    @State private var phase: CGFloat = 0.1
     
     var body: some View {
 
     CosineWaveLine(phase: phase)
         .stroke(Color.blue, lineWidth: 10)
-        .animation(.linear(duration: 2).repeatForever(autoreverses: false), value: phase)
+        .animation(.linear(duration: 2.1).repeatForever(autoreverses: false), value: phase)
         .onAppear {
             withAnimation {
                 phase = 2 * CGFloat.pi

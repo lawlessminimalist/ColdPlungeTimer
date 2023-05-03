@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct IcebergDynamicView: View {
+    @Binding var offsetY:CGFloat
     var frameHeight = 300.0
 
     var body: some View {
@@ -22,13 +23,12 @@ struct IcebergDynamicView: View {
                 .overlay(
                     CosineWaveLineView()
                         .padding()
+                        .offset(y: 0-$offsetY.wrappedValue)
                 )
                 .background(
                     CosineWaveLineView()
                         .padding()
-                        .offset(y: -30)
-
-                        
+                        .offset(y: -30-$offsetY.wrappedValue)
                 )
         }
         
@@ -36,6 +36,7 @@ struct IcebergDynamicView: View {
 
 struct IcebergDynamic_Previews: PreviewProvider {
     static var previews: some View {
-        IcebergDynamicView()
+        let exampleProgress: CGFloat = 90
+        IcebergDynamicView(offsetY: Binding.constant(exampleProgress))
     }
 }

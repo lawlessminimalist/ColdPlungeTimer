@@ -36,7 +36,7 @@ final class TimerModel: ObservableObject{
     func reset(){
         self.seconds = Float(initialTime)
         self.isActive = false
-        self.time = "\(Int(minutes)):\(Int(seconds)%60)"
+        self.time = Int(self.seconds)%60 == 0 ? "\(Int(minutes)):\(Int(seconds)%60)0" : "\(Int(minutes)):\(Int(seconds)%60)"
     }
     
     func quickSet(mins:Float){
@@ -63,7 +63,7 @@ final class TimerModel: ObservableObject{
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         
-        self .seconds = Float(seconds)
+        self.seconds = Float(seconds)
         self.time = String(format:"%d:%02d", minutes,seconds)
     }
 }

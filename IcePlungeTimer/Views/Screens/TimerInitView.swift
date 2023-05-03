@@ -43,7 +43,7 @@ struct TimerInitView: View {
                         timerModel.quickSet(mins: 5.0)
                     }
                 }
-                NavigationLink(destination: PlungeTimerView().environmentObject(timerModel),isActive: $inTimer, label:{
+                NavigationLink(){ PlungeTimerView().environmentObject(timerModel)}label:{
                     Text("Start")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -53,14 +53,7 @@ struct TimerInitView: View {
                                 .fill(Color.blue.opacity(0.7))
                         )
                         
-                } )
-                .onChange(of: inTimer) { isActive in
-                    if !isActive {
-                        // Reset the state when navigating back
-                        timerModel.reset()
-                    }
-
-                }
+                } 
             }
             
         }
