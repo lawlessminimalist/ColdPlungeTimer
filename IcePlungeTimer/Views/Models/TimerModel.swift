@@ -12,18 +12,20 @@ final class TimerModel: ObservableObject{
     @Published var showingAlert = false
     @Published var time: String = "5:00"
     @Published var seconds: Float = 300 {
-        didSet{
+        didSet {
             self.minutes = floor(seconds/60)
-            let temp_secs = (Int(seconds)%60)
-            if(temp_secs == 0){self.time = "\(Int(minutes)):\(temp_secs)0"}
-            else{self.time = "\(Int(minutes)):\(temp_secs)"}
+            let displaySeconds = Int(seconds) % 60
+            self.time = String(format: "%d:%02d", Int(minutes), displaySeconds)
+
         }
     }
+    @Published var totalSeconds: Float = 300
+
     @Published var timediff = 0
     
     
     private var minutes:Float = 5.0
-    private var initialTime = 0
+    @Published var initialTime = 0
     private var endDate = Date()
     
     func start(seconds: Float){
@@ -31,6 +33,7 @@ final class TimerModel: ObservableObject{
         self.endDate = Date()
         self.isActive = true
         self.endDate = Calendar.current.date(byAdding: .second, value: Int(seconds),to: endDate)!
+        
     }
     
     func reset(){
@@ -63,6 +66,7 @@ final class TimerModel: ObservableObject{
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         
+        self.totalSeconds = Float(seconds) + (Float(minutes)*60.00)
         self.seconds = Float(seconds)
         self.time = String(format:"%d:%02d", minutes,seconds)
     }

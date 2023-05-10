@@ -7,6 +7,15 @@
 import Dispatch
 import SwiftUI
 
+func normalizeOffset(timerModel: TimerModel) -> Float {
+    let baseline = Float(timerModel.initialTime)
+    let offsetTime = timerModel.totalSeconds
+    let ratio = baseline/offsetTime
+    return 120.00/ratio - 60.00
+}
+
+
+
 struct PlungeTimerView: View {
     @EnvironmentObject var timerModel: TimerModel
     @State var performOnce = false
@@ -35,7 +44,8 @@ struct PlungeTimerView: View {
         })
         .onReceive(timer){_ in
             timerModel.updateCountdown()
-            self.waterOffset = CGFloat(timerModel.seconds)
+            print("seconds:\(normalizeOffset(timerModel: timerModel))")
+            self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
             print($waterOffset)
         }
 

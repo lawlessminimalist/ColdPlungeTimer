@@ -11,6 +11,7 @@ struct TimerInitView: View {
     @EnvironmentObject var timerModel: TimerModel
     @State var inTimer = false
     
+    
     private let width: Double = 250
     
     var body: some View {
@@ -43,7 +44,7 @@ struct TimerInitView: View {
                         timerModel.quickSet(mins: 5.0)
                     }
                 }
-                NavigationLink(){ PlungeTimerView().environmentObject(timerModel)}label:{
+                NavigationLink(destination: PlungeTimerView().environmentObject(timerModel),isActive: $inTimer,label:{
                     Text("Start")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -52,10 +53,14 @@ struct TimerInitView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.blue.opacity(0.7))
                         )
-                        
-                } 
+                } )
+                
+                .onReceive(timerModel.$totalSeconds) { totalSeconds in
+                    if totalSeconds == 0 {
+                        self.inTimer = false
+                    }
+                }
             }
-            
         }
     }
 }

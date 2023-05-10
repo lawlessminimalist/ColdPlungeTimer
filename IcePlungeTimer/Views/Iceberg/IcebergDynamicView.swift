@@ -24,11 +24,15 @@ struct IcebergDynamicView: View {
                     CosineWaveLineView()
                         .padding()
                         .offset(y: 0-$offsetY.wrappedValue)
+                        .animation(.easeInOut(duration: 1.5)) // Use any duration you like
+
                 )
                 .background(
                     CosineWaveLineView()
                         .padding()
                         .offset(y: -30-$offsetY.wrappedValue)
+                        .animation(.easeInOut(duration: 1.5)) // Use any duration you like
+
                 )
         }
         
@@ -36,7 +40,7 @@ struct IcebergDynamicView: View {
 
 struct IcebergDynamic_Previews: PreviewProvider {
     static var previews: some View {
-        let exampleProgress: CGFloat = 90
+        let exampleProgress: CGFloat = -60
         IcebergDynamicView(offsetY: Binding.constant(exampleProgress))
     }
 }
