@@ -38,11 +38,12 @@ struct CosineWaveLine: Shape {
 
 struct CosineWaveLineView: View {
     @State private var phase: CGFloat = 0.1
+    public var color:Color = Color.blue
     
     var body: some View {
 
     CosineWaveLine(phase: phase)
-        .stroke(Color.blue, lineWidth: 10)
+        .stroke(color, lineWidth: 10)
         .animation(.linear(duration: 2.1).repeatForever(autoreverses: false), value: phase)
         .onAppear {
             withAnimation {
@@ -54,6 +55,7 @@ struct CosineWaveLineView: View {
 }
 
 struct CosineWaveLine_Previews: PreviewProvider {
+    
     static var previews: some View {
         CosineWaveLineView()
     }

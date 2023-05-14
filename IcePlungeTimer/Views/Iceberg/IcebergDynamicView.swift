@@ -21,17 +21,17 @@ struct IcebergDynamicView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height:300)
                 .overlay(
-                    CosineWaveLineView()
+                    CosineWaveLineView(color: Color.blue)
                         .padding()
                         .offset(y: 0-$offsetY.wrappedValue)
-                        .animation(.easeInOut(duration: 1.5)) // Use any duration you like
+                        .animation(.easeInOut(duration: 1)) // Use any duration you like
 
                 )
                 .background(
                     CosineWaveLineView()
                         .padding()
                         .offset(y: -30-$offsetY.wrappedValue)
-                        .animation(.easeInOut(duration: 1.5)) // Use any duration you like
+                        .animation(.easeInOut(duration: 1)) // Use any duration you like
 
                 )
         }
@@ -40,7 +40,7 @@ struct IcebergDynamicView: View {
 
 struct IcebergDynamic_Previews: PreviewProvider {
     static var previews: some View {
-        let exampleProgress: CGFloat = -60
+        let exampleProgress: CGFloat = 0
         IcebergDynamicView(offsetY: Binding.constant(exampleProgress))
     }
 }

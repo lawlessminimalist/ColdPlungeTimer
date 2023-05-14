@@ -15,9 +15,6 @@ struct TimerInitView: View {
     private let width: Double = 250
     
     var body: some View {
-        NavigationView{
-            
-            
             VStack{
                 Image("iceberg")
                     .resizable()
@@ -61,7 +58,7 @@ struct TimerInitView: View {
                     }
                 }
             }
-        }
+        
     }
 }
 
