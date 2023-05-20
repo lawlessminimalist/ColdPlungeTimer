@@ -20,6 +20,7 @@ struct PlungeTimerView: View {
     @EnvironmentObject var timerModel: TimerModel
     @State var performOnce = false
     @State var waterOffset:CGFloat = CGFloat(0.0)
+    @Binding var path: [String]
 
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     private let width: Double = 250
@@ -43,6 +44,9 @@ struct PlungeTimerView: View {
 
         })
         .onReceive(timer){_ in
+            if(timerModel.totalSeconds == 0){
+                path = []
+            }
             timerModel.updateCountdown()
             print("seconds:\(normalizeOffset(timerModel: timerModel))")
             self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
@@ -56,7 +60,7 @@ struct PlungeTimerView_Previews: PreviewProvider {
     static var timerModel = TimerModel()
 
     static var previews: some View {
-        PlungeTimerView()
+        PlungeTimerView(path: .constant(["Home","Init"]))
             .environmentObject(timerModel)
     }
 }

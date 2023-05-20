@@ -37,7 +37,7 @@ struct CosineWaveLine: Shape {
 
 
 struct CosineWaveLineView: View {
-    @State private var phase: CGFloat = 0.1
+    @State public var phase: CGFloat = 0.1
     public var color:Color = Color.blue
     
     var body: some View {

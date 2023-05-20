@@ -24,14 +24,14 @@ struct IcebergDynamicView: View {
                     CosineWaveLineView(color: Color.blue)
                         .padding()
                         .offset(y: 0-$offsetY.wrappedValue)
-                        .animation(.easeInOut(duration: 1)) // Use any duration you like
+                        .animation(Animation.easeInOut(duration: 1), value: $offsetY.wrappedValue)// Use any duration you like
 
                 )
                 .background(
                     CosineWaveLineView()
                         .padding()
                         .offset(y: -30-$offsetY.wrappedValue)
-                        .animation(.easeInOut(duration: 1)) // Use any duration you like
+                        .animation(Animation.easeInOut(duration: 1), value: $offsetY.wrappedValue) // Use any duration you like
 
                 )
         }

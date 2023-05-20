@@ -10,7 +10,8 @@ import SwiftUI
 struct TimerInitView: View {
     @EnvironmentObject var timerModel: TimerModel
     @State var inTimer = false
-    
+    @Binding var path: [String]
+
     
     private let width: Double = 250
     
@@ -41,7 +42,9 @@ struct TimerInitView: View {
                         timerModel.quickSet(mins: 5.0)
                     }
                 }
-                NavigationLink(destination: PlungeTimerView().environmentObject(timerModel),isActive: $inTimer,label:{
+                Button(action: {
+                    path.append("Plunge")
+                }, label: {
                     Text("Start")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -51,7 +54,9 @@ struct TimerInitView: View {
                                 .fill(Color.blue.opacity(0.7))
                         )
                 } )
-                
+                .navigationDestination(for: Int.self) { int in
+                    PlungeTimerView(path: $path).environmentObject(timerModel)
+                            }
                 .onReceive(timerModel.$totalSeconds) { totalSeconds in
                     if totalSeconds == 0 {
                         self.inTimer = false
@@ -64,10 +69,10 @@ struct TimerInitView: View {
 
 struct TimerInitView_Previews: PreviewProvider {
     static var timerModel = TimerModel()
-
+    
     static var previews: some View {
 
-        TimerInitView()
+        TimerInitView(path: .constant(["Home"]))
             .environmentObject(timerModel)
     }
 }
