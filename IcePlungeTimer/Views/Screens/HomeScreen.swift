@@ -44,8 +44,6 @@ struct HomeScreen: View {
                             }
                             .padding()
                     )
-                
-                
                 Button(action: {
                     path.append("Init")
                 }, label: {
@@ -69,8 +67,6 @@ struct HomeScreen: View {
                                 }
                 }
             }
-            
-            
         }
     }
 }
