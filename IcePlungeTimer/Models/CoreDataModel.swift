@@ -4,7 +4,7 @@ import Foundation
 class CoreDataStack {
 
     static let shared = CoreDataStack()
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PlungeData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -55,18 +55,18 @@ class CoreDataStack {
         }
     }
     
-    func fetchAllPlunges() {
+    func fetchAllPlunges() -> [Plunge]  {
+        CoreDataStack.shared.loadExamples()
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let request: NSFetchRequest<Plunge> = Plunge.fetchRequest()
         
         do {
             let plunges = try context.fetch(request)
-            for plunge in plunges {
-                print("Duration: \(plunge.duration), Temperature: \(plunge.temperature), Date: \(plunge.date)")
-            }
+            return plunges
         } catch {
             print("Failed to fetch Plunges: \(error)")
         }
+        return []
     }
     
     func deleteAllPlunges() {
@@ -80,5 +80,17 @@ class CoreDataStack {
             print("Failed to delete Plunges: \(error)")
         }
     }
+    
+    func loadExamples() {
+        let context = persistentContainer.viewContext
+        for _ in 0..<10 {
+            do {
+                try savePlunge(duration: 22, temperature: 2)
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+    }
+
     
 }

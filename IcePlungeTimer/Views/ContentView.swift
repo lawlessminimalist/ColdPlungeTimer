@@ -7,10 +7,45 @@
 
 import SwiftUI
 
+// Place Holder Views
+struct ListView: View {
+    var body: some View {
+        PlungeListView()
+    }
+}
+
+struct SettingsView: View {
+    var body: some View {
+        Text("SettingsView")
+    }
+}
+
+
 struct ContentView: View {
     
+    @State private var selectedTab = 1
+
     var body: some View {
-        HomeScreen()
+        TabView(selection: $selectedTab) {
+
+            
+            ListView()
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                }
+                .tag(0)
+            HomeScreen()
+                .tabItem {
+                    Image(systemName: "house")
+                }
+                .tag(1)
+            
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                }
+                .tag(2)
+        }
     }
 
 }

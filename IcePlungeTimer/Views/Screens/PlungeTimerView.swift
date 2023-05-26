@@ -26,10 +26,12 @@ struct PlungeTimerView: View {
 
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     private let width: Double = 250
+    @Environment(\.colorScheme) var colorScheme
+
 
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
+            colorScheme == .dark ? Color.black.edgesIgnoringSafeArea(.all) : Color.white.edgesIgnoringSafeArea(.all)
             VStack{
                 IcebergDynamicView(offsetY:$waterOffset)
                 if showText {
@@ -76,12 +78,10 @@ struct PlungeTimerView: View {
                             tapCount = 0
                         }
                     } else if tapCount == 2 {
-                        CoreDataStack.shared.deleteAllPlunges()
                         CoreDataStack.shared.savePlunge(
                             duration: Int(Float(timerModel.initialTime) - timerModel.totalSeconds),
                             temperature: 4.00)
                         CoreDataStack.shared.fetchAllPlunges()
-                        
                         path = []
                     }
                 })

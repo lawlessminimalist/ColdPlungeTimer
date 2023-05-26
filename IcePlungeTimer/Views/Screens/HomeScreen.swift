@@ -11,7 +11,6 @@ struct HomeScreen: View {
     private var borderColor = Color.cyan
     var body: some View {
         NavigationStack(path: $path) {
-            
             VStack{
                 DatePicker(
                     "Start Date",
@@ -66,6 +65,7 @@ struct HomeScreen: View {
                                     Text("Unknown destination")
                                 }
                 }
+                
             }
         }
     }
