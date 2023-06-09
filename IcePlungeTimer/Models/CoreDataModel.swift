@@ -82,7 +82,6 @@ class CoreDataStack {
     }
     
     func loadExamples() {
-        let context = persistentContainer.viewContext
         for _ in 0..<10 {
             do {
                 try savePlunge(duration: 22, temperature: 2)

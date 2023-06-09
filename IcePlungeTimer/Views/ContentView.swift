@@ -27,8 +27,6 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-
-            
             ListView()
                 .tabItem {
                     Image(systemName: "list.bullet")
@@ -46,7 +44,10 @@ struct ContentView: View {
                 }
                 .tag(2)
         }
+
+
     }
+
 
 }
 

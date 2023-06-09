@@ -16,6 +16,8 @@ struct IcePlungeTimerApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(timerModel)
+                .background(Color(.green)) // Set background color of the app
+                .ignoresSafeArea()
         }
     }
     
