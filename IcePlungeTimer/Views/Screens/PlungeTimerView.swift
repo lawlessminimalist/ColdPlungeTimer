@@ -9,9 +9,11 @@ import SwiftUI
 
 func normalizeOffset(timerModel: TimerModel) -> Float {
     let baseline = Float(timerModel.initialTime)
-    let offsetTime = timerModel.totalSeconds
-    let ratio = baseline/offsetTime
-    return 120.00/ratio - 60.00
+    var offsetTime = Float(max(1, timerModel.totalSeconds))
+    let ratio = offsetTime / baseline
+    let x = 120 * (1 - ratio)
+    print("x=",x)
+    return x
 }
 
 
@@ -40,7 +42,7 @@ struct PlungeTimerView: View {
             }
             .onAppear(perform:{
                 timerModel.start(seconds:timerModel.seconds)
-                self.waterOffset = CGFloat(timerModel.seconds)
+                self.waterOffset = 0
                 timerModel.updateCountdown() // Updating the countdown as soon as the view appears
 
                 })
@@ -57,7 +59,6 @@ struct PlungeTimerView: View {
                     path = []
                 }
                 timerModel.updateCountdown()
-                print("seconds:\(normalizeOffset(timerModel: timerModel))")
                 self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
                 print($waterOffset)
             }
