@@ -1,14 +1,15 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @State private var date = Date()
-    let parentBackgroundColor = Color.white  // Define parent background color
-    @State var offsetY = CGFloat(0.0)
-    @State var phase: CGFloat = 0.1
-    @State private var path: [String] = []
+    @Binding public var inNestedView:Bool
 
+    @State public var date = Date()
+    @State public var offsetY = CGFloat(0.0)
+    @State public var phase: CGFloat = 0.1
+    @State public var path: [String] = []
     
-    private var borderColor = Color.cyan
+    private let parentBackgroundColor = Color.white  // Define parent background color
+    private let borderColor = Color.cyan
     var body: some View {
         ZStack{
             Color(.red)
@@ -58,17 +59,18 @@ struct HomeScreen: View {
                             .padding()
                         
                     })
-                    .navigationDestination(for: String.self) { str in
-                        switch str {
-                        case "Init":
-                            TimerInitView(path: $path)
-                        case "Plunge":
-                            PlungeTimerView(path: $path)
-                        default:
-                            Text("Unknown destination")
-                        }
+                }
+
+                .navigationDestination(for: String.self) { str in
+                    switch str {
+                    case "Init":
+                        TimerInitView(path: $path, inNestedView: $inNestedView)
+                            .toolbar(.hidden, for: .tabBar)
+                    case "Plunge":
+                        PlungeTimerView(path: $path, inNestedView: $inNestedView)
+                    default:
+                        Text("Unknown destination")
                     }
-                    
                 }
             }
             )
@@ -78,6 +80,6 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen()
+        HomeScreen(inNestedView: .constant(false))
     }
 }

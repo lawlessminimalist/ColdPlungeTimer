@@ -9,23 +9,22 @@ import SwiftUI
 
 func normalizeOffset(timerModel: TimerModel) -> Float {
     let baseline = Float(timerModel.initialTime)
-    var offsetTime = Float(max(1, timerModel.totalSeconds))
+    let offsetTime = Float(max(1, timerModel.totalSeconds))
     let ratio = offsetTime / baseline
-    let x = 120 * (1 - ratio)
-    print("x=",x)
-    return x
+    return 120 * (1 - ratio)
 }
-
-
 
 struct PlungeTimerView: View {
     @EnvironmentObject var timerModel: TimerModel
+    
     @State var performOnce = false
     @State var waterOffset:CGFloat = CGFloat(0.0)
-    @Binding var path: [String]
     @State private var showText = false
     @State private var tapCount = 0
 
+    @Binding var path: [String]
+    @Binding var inNestedView:Bool
+    
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     private let width: Double = 250
 
@@ -41,10 +40,10 @@ struct PlungeTimerView: View {
                 TimerView()
             }
             .onAppear(perform:{
-                timerModel.start(seconds:timerModel.seconds)
                 self.waterOffset = 0
-                timerModel.updateCountdown() // Updating the countdown as soon as the view appears
-
+                // Start the timer and update the timer countdown
+                timerModel.start(seconds:timerModel.seconds)
+                timerModel.updateCountdown()
                 })
             
             .onDisappear(perform: {
@@ -60,7 +59,6 @@ struct PlungeTimerView: View {
                 }
                 timerModel.updateCountdown()
                 self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
-                print($waterOffset)
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -79,8 +77,9 @@ struct PlungeTimerView: View {
                         }
                     } else if tapCount == 2 {
                         CoreDataStack.shared.savePlunge(
-                            duration: Int(Float(timerModel.initialTime) - timerModel.totalSeconds),
+                            duration: Int(timerModel.totalSeconds),
                             temperature: 4.00)
+                        print(timerModel.time)
                         path = []
                     }
                 })
@@ -92,7 +91,7 @@ struct PlungeTimerView_Previews: PreviewProvider {
     static var timerModel = TimerModel()
 
     static var previews: some View {
-        PlungeTimerView(path: .constant(["Home","Init"]))
+        PlungeTimerView(path: .constant(["Home","Init"]),inNestedView: .constant(true))
             .environmentObject(timerModel)
     }
 }

@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-// Place Holder Views
-struct ListView: View {
-    var body: some View {
-        PlungeListView()
-    }
-}
-
 struct SettingsView: View {
     var body: some View {
         Text("SettingsView")
@@ -22,17 +15,21 @@ struct SettingsView: View {
 
 
 struct ContentView: View {
-    
     @State private var selectedTab = 1
-
+    @State private var inNestedView = false
+    
+    init() {
+        UITabBar.appearance().isHidden = inNestedView
+    }
+    
     var body: some View {
         TabView(selection: $selectedTab) {
-            ListView()
+            PlungeListView()
                 .tabItem {
                     Image(systemName: "list.bullet")
                 }
                 .tag(0)
-            HomeScreen()
+            HomeScreen(inNestedView: $inNestedView)
                 .tabItem {
                     Image(systemName: "house")
                 }
@@ -44,12 +41,11 @@ struct ContentView: View {
                 }
                 .tag(2)
         }
-
+        .toolbar(inNestedView ? .visible : .hidden)
 
     }
-
-
 }
+
 
 
 

@@ -9,8 +9,11 @@ import SwiftUI
 
 struct TimerInitView: View {
     @EnvironmentObject var timerModel: TimerModel
-    @State var inTimer = false
+    
     @Binding var path: [String]
+    @Binding var inNestedView:Bool
+    
+    @State var inTimer = false
 
     
     private let width: Double = 250
@@ -25,8 +28,6 @@ struct TimerInitView: View {
                     .padding()
                     .frame(width: width)
                     .animation(.easeInOut,value: timerModel.seconds)
-                
-                
                 Text("Quick Select")
                 HStack{
                     Button("1 min") {
@@ -40,8 +41,7 @@ struct TimerInitView: View {
                     }
                     Button("5 min") {
                         timerModel.quickSet(mins: 5.0)
-                    }
-                }
+                    }}
                 Button(action: {
                     path.append("Plunge")
                 }, label: {
@@ -55,24 +55,24 @@ struct TimerInitView: View {
                         )
                 } )
                 .navigationDestination(for: Int.self) { int in
-                    PlungeTimerView(path: $path).environmentObject(timerModel)
-                            }
-                .onReceive(timerModel.$totalSeconds) { totalSeconds in
-                    if totalSeconds == 0 {
-                        self.inTimer = false
-                    }
-                }
+                    PlungeTimerView(path: $path,inNestedView:$inNestedView )
+                        .environmentObject(timerModel)}}
+            .onAppear(){
+                //Hide the bottom tool bar
+                inNestedView = true
             }
-        
-    }
-}
+            .onDisappear(){
+                //Hide the bottom tool bar
+                inNestedView = false
+            }
+    }}
 
 struct TimerInitView_Previews: PreviewProvider {
     static var timerModel = TimerModel()
     
     static var previews: some View {
 
-        TimerInitView(path: .constant(["Home"]))
+        TimerInitView(path: .constant(["Home"]),inNestedView: .constant(true))
             .environmentObject(timerModel)
     }
 }

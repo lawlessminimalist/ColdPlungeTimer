@@ -56,7 +56,6 @@ class CoreDataStack {
     }
     
     func fetchAllPlunges() -> [Plunge]  {
-        CoreDataStack.shared.loadExamples()
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let request: NSFetchRequest<Plunge> = Plunge.fetchRequest()
         
@@ -78,16 +77,6 @@ class CoreDataStack {
             try context.save()
         } catch {
             print("Failed to delete Plunges: \(error)")
-        }
-    }
-    
-    func loadExamples() {
-        for _ in 0..<10 {
-            do {
-                try savePlunge(duration: 22, temperature: 2)
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
         }
     }
 
