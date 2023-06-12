@@ -11,22 +11,27 @@ final class TimerModel: ObservableObject{
     @Published var isActive = false
     @Published var showingAlert = false
     @Published var time: String = "5:00"
+    @Published var totalSeconds: Float = 300
+    @Published var initialTime = 0
+    @Published var minutesElapsed:Int = 0
+    @Published var secondsElapsed:Int = 0
+    private var minutes:Float = 5.0
+    private var endDate = Date()
+
     @Published var seconds: Float = 300 {
         didSet {
-            self.minutes = floor(seconds/60)
             let displaySeconds = Int(seconds) % 60
-            self.time = String(format: "%d:%02d", Int(minutes), displaySeconds)
 
+            self.minutes = floor(seconds/60)
+            self.secondsElapsed = initialTime - Int(totalSeconds)
+            self.minutesElapsed = Int(floor(Double(self.secondsElapsed) / 60.0))
+            self.time = String(format: "%d:%02d", Int(minutes), displaySeconds)
+            
         }
     }
-    @Published var totalSeconds: Float = 300
 
-    @Published var timediff = 0
-    
-    
-    private var minutes:Float = 5.0
-    @Published var initialTime = 0
-    private var endDate = Date()
+
+
     
     func start(seconds: Float){
         self.initialTime = Int(seconds)

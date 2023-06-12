@@ -21,10 +21,11 @@ struct PlungeTimerView: View {
     @State var waterOffset:CGFloat = CGFloat(0.0)
     @State private var showText = false
     @State private var tapCount = 0
-
+    
     @Binding var path: [String]
     @Binding var inNestedView:Bool
-    
+    @Binding var session:PlungeSession
+
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     private let width: Double = 250
 
@@ -76,11 +77,9 @@ struct PlungeTimerView: View {
                             tapCount = 0
                         }
                     } else if tapCount == 2 {
-                        CoreDataStack.shared.savePlunge(
-                            duration: Int(timerModel.totalSeconds),
-                            temperature: 4.00)
-                        print(timerModel.time)
-                        path = []
+                        // TODO: add temperature setting
+                        session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
+                        path.append("PlungeComplete")
                     }
                 })
     }
@@ -91,7 +90,7 @@ struct PlungeTimerView_Previews: PreviewProvider {
     static var timerModel = TimerModel()
 
     static var previews: some View {
-        PlungeTimerView(path: .constant(["Home","Init"]),inNestedView: .constant(true))
+        PlungeTimerView(path: .constant(["Home","Init"]),inNestedView: .constant(true),session: .constant(PlungeSession(minutes: 1, seconds: 2, temperature: 3)))
             .environmentObject(timerModel)
     }
 }

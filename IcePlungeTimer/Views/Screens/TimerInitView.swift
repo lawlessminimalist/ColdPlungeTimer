@@ -19,44 +19,41 @@ struct TimerInitView: View {
     private let width: Double = 250
     
     var body: some View {
-            VStack{
-                Image("iceberg")
-                    .resizable()
-                    .frame(width: width,height: 250)
-                TimerView()
-                Slider(value:$timerModel.seconds,in: 0...600, step: 10)
+        VStack{
+            Image("iceberg")
+                .resizable()
+                .frame(width: width,height: 250)
+            TimerView()
+            Slider(value:$timerModel.seconds,in: 0...600, step: 10)
+                .padding()
+                .frame(width: width)
+                .animation(.easeInOut,value: timerModel.seconds)
+            Text("Quick Select")
+            HStack{
+                Button("1 min") {
+                    timerModel.quickSet(mins: 1.0)
+                }
+                Button("2 min") {
+                    timerModel.quickSet(mins: 2.0)
+                }
+                Button("3 min") {
+                    timerModel.quickSet(mins: 3.0)
+                }
+                Button("5 min") {
+                    timerModel.quickSet(mins: 5.0)
+                }}
+            Button(action: {
+                path.append("Plunge")
+            }, label: {
+                Text("Start")
+                    .font(.headline)
+                    .foregroundColor(.white)
                     .padding()
-                    .frame(width: width)
-                    .animation(.easeInOut,value: timerModel.seconds)
-                Text("Quick Select")
-                HStack{
-                    Button("1 min") {
-                        timerModel.quickSet(mins: 1.0)
-                    }
-                    Button("2 min") {
-                        timerModel.quickSet(mins: 2.0)
-                    }
-                    Button("3 min") {
-                        timerModel.quickSet(mins: 3.0)
-                    }
-                    Button("5 min") {
-                        timerModel.quickSet(mins: 5.0)
-                    }}
-                Button(action: {
-                    path.append("Plunge")
-                }, label: {
-                    Text("Start")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.blue.opacity(0.7))
-                        )
-                } )
-                .navigationDestination(for: Int.self) { int in
-                    PlungeTimerView(path: $path,inNestedView:$inNestedView )
-                        .environmentObject(timerModel)}}
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.blue.opacity(0.7))
+                    )
+            } )}
             .onAppear(){
                 //Hide the bottom tool bar
                 inNestedView = true
