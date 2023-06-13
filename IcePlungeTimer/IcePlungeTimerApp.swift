@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-
 @main
 struct IcePlungeTimerApp: App {
     @StateObject private var timerModel = TimerModel()
+    let context = CoreDataStack.shared.persistentContainer.viewContext
+
 
     var body: some Scene {
         WindowGroup {
@@ -18,6 +19,9 @@ struct IcePlungeTimerApp: App {
                 .environmentObject(timerModel)
                 .background(Color(.green)) // Set background color of the app
                 .ignoresSafeArea()
+                .environment(\.managedObjectContext, context)
+
+
         }
     }
     

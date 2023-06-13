@@ -5,9 +5,14 @@ import SwiftUI
 struct PlungeListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Plunge.entity(), sortDescriptors: []) private var plunges: FetchedResults<Plunge>
+    @FetchRequest(
+        entity: Plunge.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Plunge.date, ascending: true)],
+        animation: .default)
+    private var plunges: FetchedResults<Plunge>
     
     var body: some View {
+
         ScrollView {
             VStack(alignment: .leading) {
                 let groupedPlunges = Dictionary(grouping: plunges, by: { Calendar.current.startOfDay(for: $0.date ?? Date()) })

@@ -15,35 +15,11 @@ class CoreDataStack {
         return container
     }()
 
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
+    // You would no longer use this saveContext() function,
+    // as saving will be handled by the @Environment(\.managedObjectContext) in your SwiftUI views.
+    // However, you can still call this function when your app is going to background or terminating.
 
-    func savePlunge(minutes: Int,seconds:Int,temperature: Float, caloricBurn:Int) {
-        let context = persistentContainer.viewContext
-        let newPlunge = Plunge(context: context)
-        newPlunge.temperature = temperature
-        newPlunge.date = Date()
-        newPlunge.caloricBurn = Int32(caloricBurn)
-        newPlunge.minutes = Int32(minutes)
-        newPlunge.seconds = Int32(seconds)
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func fetchPlungeByDate(date: Date) -> [Plunge] {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
+    func fetchPlungeByDate(context: NSManagedObjectContext, date: Date) -> [Plunge] {
         let request: NSFetchRequest<Plunge> = Plunge.fetchRequest()
         let datePredicate = NSPredicate(format: "date == %@", date as NSDate)
         request.predicate = datePredicate
@@ -57,8 +33,7 @@ class CoreDataStack {
         }
     }
     
-    func fetchAllPlunges() -> [Plunge]  {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
+    func fetchAllPlunges(context: NSManagedObjectContext) -> [Plunge]  {
         let request: NSFetchRequest<Plunge> = Plunge.fetchRequest()
         
         do {
@@ -70,8 +45,21 @@ class CoreDataStack {
         return []
     }
     
-    func deleteAllPlunges() {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
+    func savePlunge(minutes: Int,seconds:Int,temperature: Float, caloricBurn:Int, context: NSManagedObjectContext) {
+        let newPlunge = Plunge(context: context)
+        newPlunge.temperature = temperature
+        newPlunge.date = Date()
+        newPlunge.caloricBurn = Int32(caloricBurn)
+        newPlunge.minutes = Int32(minutes)
+        newPlunge.seconds = Int32(seconds)
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteAllPlunges(context: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Plunge")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
@@ -81,6 +69,4 @@ class CoreDataStack {
             print("Failed to delete Plunges: \(error)")
         }
     }
-
-    
 }

@@ -3,6 +3,7 @@ import SwiftUI
 struct CompletedPlungeView: View {
     @Binding public var path:[String]
     @Binding public var session:PlungeSession
+    @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         VStack{
@@ -51,7 +52,8 @@ struct CompletedPlungeView: View {
                                     minutes: session.minutes,
                                     seconds: session.seconds,
                                     temperature: session.temperature,
-                                    caloricBurn: session.kcaloricBurn
+                                    caloricBurn: session.kcaloricBurn,
+                                    context: viewContext
                                 )
                                 path = []
                                 

@@ -20,7 +20,7 @@
 		6991EECC29FA14190021B752 /* PlungeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EECB29FA14190021B752 /* PlungeTimerView.swift */; };
 		6991EED229FA1BD60021B752 /* TimerInitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EED129FA1BD60021B752 /* TimerInitView.swift */; };
 		6991EED429FA20590021B752 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991EED329FA20590021B752 /* TimerModel.swift */; };
-		9E0D11BA2A1989FF00C1FD77 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11B92A1989FF00C1FD77 /* CoreDataModel.swift */; };
+		9E0D11BA2A1989FF00C1FD77 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11B92A1989FF00C1FD77 /* CoreDataStack.swift */; };
 		9E0D11BD2A19901200C1FD77 /* PlungeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11BB2A19901200C1FD77 /* PlungeData.xcdatamodeld */; };
 		9E0D11C12A1994A900C1FD77 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0D11C02A1994A900C1FD77 /* CloudKit.framework */; };
 		9E0D11C62A19FD0500C1FD77 /* PlungeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */; };
@@ -63,7 +63,7 @@
 		6991EECB29FA14190021B752 /* PlungeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeTimerView.swift; sourceTree = "<group>"; };
 		6991EED129FA1BD60021B752 /* TimerInitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInitView.swift; sourceTree = "<group>"; };
 		6991EED329FA20590021B752 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
-		9E0D11B92A1989FF00C1FD77 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		9E0D11B92A1989FF00C1FD77 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		9E0D11BC2A19901200C1FD77 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9E0D11BE2A19949800C1FD77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9E0D11C02A1994A900C1FD77 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -180,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				6991EED329FA20590021B752 /* TimerModel.swift */,
-				9E0D11B92A1989FF00C1FD77 /* CoreDataModel.swift */,
+				9E0D11B92A1989FF00C1FD77 /* CoreDataStack.swift */,
 				9E0D11BB2A19901200C1FD77 /* PlungeData.xcdatamodeld */,
 				9EBB1B0A2A369885000947B2 /* PlungeSession.swift */,
 			);
@@ -363,7 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E0D11BA2A1989FF00C1FD77 /* CoreDataModel.swift in Sources */,
+				9E0D11BA2A1989FF00C1FD77 /* CoreDataStack.swift in Sources */,
 				6991EED229FA1BD60021B752 /* TimerInitView.swift in Sources */,
 				6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */,
 				9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */,
