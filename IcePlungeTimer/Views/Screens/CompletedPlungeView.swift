@@ -18,7 +18,6 @@ struct CompletedPlungeView: View {
             
             Text("See below for the stats about your plunge")
                 .font(.system(size: 18))
-                .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding([.leading, .trailing], 20)
                 .padding(.bottom, 30)
@@ -34,22 +33,28 @@ struct CompletedPlungeView: View {
                 VStack {
                     Image(systemName: "thermometer")
                         .font(.system(size: 30))
-                    Text("\(session.temperature)°C")
+                    Text("\(Int(session.temperature))°C")
                         .font(.system(size: 14))
                 }
                 
                 VStack {
                     Image(systemName: "flame")
                         .font(.system(size: 30))
-                    Text("22 calories")
+                    Text("\(session.kcaloricBurn)cal")
                         .font(.system(size: 14))
                 }
-                .foregroundColor(.black)
             }
             HStack(spacing: 30) {
                             Button(action: {
-                                // Logic to save the plunge session goes here
-                                print("Save button tapped!")
+
+                                CoreDataStack.shared.savePlunge(
+                                    minutes: session.minutes,
+                                    seconds: session.seconds,
+                                    temperature: session.temperature,
+                                    caloricBurn: session.kcaloricBurn
+                                )
+                                path = []
+                                
                             }) {
                                 Text("Save")
                                     .font(.headline)

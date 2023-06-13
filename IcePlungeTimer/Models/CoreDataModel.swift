@@ -27,12 +27,14 @@ class CoreDataStack {
         }
     }
 
-    func savePlunge(duration: Int, temperature: Float) {
+    func savePlunge(minutes: Int,seconds:Int,temperature: Float, caloricBurn:Int) {
         let context = persistentContainer.viewContext
         let newPlunge = Plunge(context: context)
-        newPlunge.duration = Int16(duration)
         newPlunge.temperature = temperature
         newPlunge.date = Date()
+        newPlunge.caloricBurn = Int32(caloricBurn)
+        newPlunge.minutes = Int32(minutes)
+        newPlunge.seconds = Int32(seconds)
         do {
             try context.save()
         } catch let error as NSError {

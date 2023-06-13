@@ -55,8 +55,9 @@ struct PlungeTimerView: View {
             .onReceive(timer){_ in
                 // Handle timer complete - save and navigate
                 if(timerModel.totalSeconds == 0){
-                    CoreDataStack.shared.savePlunge(duration: timerModel.initialTime, temperature: 4)
-                    path = []
+                    // TODO: add temperature setting
+                    session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
+                    path.append("PlungeComplete")
                 }
                 timerModel.updateCountdown()
                 self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
