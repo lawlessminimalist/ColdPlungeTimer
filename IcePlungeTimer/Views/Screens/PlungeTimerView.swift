@@ -6,6 +6,8 @@
 //
 import Dispatch
 import SwiftUI
+import Combine
+
 
 func normalizeOffset(timerModel: TimerModel) -> Float {
     let baseline = Float(timerModel.initialTime)
@@ -27,6 +29,8 @@ struct PlungeTimerView: View {
     @Binding var session:PlungeSession
 
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    @State private var timerCancellable: Cancellable? = nil
+
     private let width: Double = 250
 
     var body: some View {
@@ -42,10 +46,19 @@ struct PlungeTimerView: View {
             }
             .onAppear(perform:{
                 self.waterOffset = 0
-                // Start the timer and update the timer countdown
                 timerModel.start(seconds:timerModel.seconds)
                 timerModel.updateCountdown()
-                })
+                
+                timerCancellable = timer.sink { _ in
+                                if(timerModel.totalSeconds == 0 && !performOnce){
+                                    session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
+                                    path.append("PlungeComplete")
+                                    performOnce = true
+                                }
+                                timerModel.updateCountdown()
+                                self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel))
+                            }
+                        })
             
             .onDisappear(perform: {
                 timerModel.reset()
@@ -53,12 +66,6 @@ struct PlungeTimerView: View {
             })
             
             .onReceive(timer){_ in
-                // Handle timer complete - save and navigate
-                if(timerModel.totalSeconds == 0){
-                    // TODO: add temperature setting
-                    session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
-                    path.append("PlungeComplete")
-                }
                 timerModel.updateCountdown()
                 self.waterOffset = CGFloat(normalizeOffset(timerModel: timerModel) )
             }

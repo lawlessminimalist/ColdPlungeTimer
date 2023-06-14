@@ -24,7 +24,7 @@ struct TimerInitView: View {
                 .resizable()
                 .frame(width: width,height: 250)
             TimerView()
-            Slider(value:$timerModel.seconds,in: 0...600, step: 10)
+            Slider(value:$timerModel.seconds,in: 10...600, step: 10)
                 .padding()
                 .frame(width: width)
                 .animation(.easeInOut,value: timerModel.seconds)
