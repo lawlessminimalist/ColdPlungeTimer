@@ -7,6 +7,8 @@
 import Dispatch
 import SwiftUI
 import Combine
+import AudioToolbox
+import AVFoundation
 
 
 func normalizeOffset(timerModel: TimerModel) -> Float {
@@ -15,6 +17,8 @@ func normalizeOffset(timerModel: TimerModel) -> Float {
     let ratio = offsetTime / baseline
     return 120 * (1 - ratio)
 }
+
+
 
 struct PlungeTimerView: View {
     @EnvironmentObject var timerModel: TimerModel
@@ -27,7 +31,7 @@ struct PlungeTimerView: View {
     @Binding var path: [String]
     @Binding var inNestedView:Bool
     @Binding var session:PlungeSession
-
+    
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     @State private var timerCancellable: Cancellable? = nil
 
@@ -52,6 +56,8 @@ struct PlungeTimerView: View {
                 timerCancellable = timer.sink { _ in
                                 if(timerModel.totalSeconds == 0 && !performOnce){
                                     session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
+                                        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+
                                     path.append("PlungeComplete")
                                     performOnce = true
                                 }

@@ -1,13 +1,17 @@
 import SwiftUI
+import UserNotifications
 
 struct HomeScreen: View {
     @Binding public var inNestedView:Bool
     @State public var plungeSession:PlungeSession = PlungeSession()
+    @State public var selectedSound:Int
 
     @State private var date = Date()
     @State private var offsetY = CGFloat(0.0)
     @State private var phase: CGFloat = 0.1
     @State private var path: [String] = []
+
+    
     
     private let parentBackgroundColor = Color.white  // Define parent background color
     private let borderColor = Color.cyan
@@ -61,16 +65,17 @@ struct HomeScreen: View {
                         
                     })
                 }
+                
 
                 .navigationDestination(for: String.self) { str in
                     switch str {
                     case "Init":
-                        TimerInitView(path: $path, inNestedView: $inNestedView)
+                        TimerInitView(path: $path, inNestedView: $inNestedView,selectedSound:$selectedSound)
                             .toolbar(.hidden, for: .tabBar)
                     case "Plunge":
                         PlungeTimerView(path: $path, inNestedView: $inNestedView, session: $plungeSession)
                     case "PlungeComplete":
-                        CompletedPlungeView(path: $path, session: $plungeSession)
+                        CompletedPlungeView(path: $path, session: $plungeSession,selectedSound: $selectedSound)
                     default:
                         Text("Unknown destination")
                     }
@@ -83,6 +88,6 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(inNestedView: .constant(false),plungeSession: PlungeSession(minutes: 1, seconds: 2, temperature: 3))
+        HomeScreen(inNestedView: .constant(false),plungeSession: PlungeSession(minutes: 1, seconds: 2, temperature: 3),selectedSound:1320)
     }
 }

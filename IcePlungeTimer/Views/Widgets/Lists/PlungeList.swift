@@ -7,7 +7,7 @@ struct PlungeListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         entity: Plunge.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Plunge.date, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Plunge.date, ascending: false)],
         animation: .default)
     private var plunges: FetchedResults<Plunge>
     
@@ -15,11 +15,15 @@ struct PlungeListView: View {
 
         ScrollView {
             VStack(alignment: .leading) {
-                let groupedPlunges = Dictionary(grouping: plunges, by: { Calendar.current.startOfDay(for: $0.date ?? Date()) })
-                let sortedKeys = groupedPlunges.keys.sorted()
+                let groupedPlunges = Dictionary(grouping: plunges, by: { (plunge: Plunge) -> Date in
+                    // if nil set to now
+                    let date = plunge.date ?? Date()
+                    let components = Calendar.current.dateComponents([.year, .month], from: date)
+                    return Calendar.current.date(from: components) ?? Date()
+                })
+                let sortedKeys = groupedPlunges.keys.sorted(by:>)
                 ForEach(sortedKeys, id: \.self) { key in
                     HStack {
-                        
                         Text(dateFormatter.string(from: key))
                             .padding(.horizontal,10)
                         Spacer()
@@ -43,9 +47,8 @@ struct PlungeListView: View {
             
         }
         .border(Color.blue, width: 4)
-        .cornerRadius(5)
+        .cornerRadius(10)
         .frame(maxWidth: .infinity,maxHeight:UIScreen.main.bounds.height * 0.5 )
-        
         .padding([.leading, .trailing], UIScreen.main.bounds.width * 0.1)
     }
 }
@@ -54,13 +57,27 @@ struct PlungeListView: View {
 struct CardView: View {
     var plunge: Plunge
     
+    private let smallDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+    
     var body: some View {
         VStack(alignment: .leading){
-            Text("Ice Plunge")
-                .font(.body)
-                .foregroundColor(.blue)
-                .padding(.horizontal,10)
-                .padding(.bottom,10)
+            HStack {
+                Text("Ice Plunge")
+                    .font(.body)
+                    .foregroundColor(.blue)
+                
+                Spacer()
+                
+                Text(smallDateFormatter.string(from: plunge.date ?? Date()))
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            .padding(.horizontal,10)
+            .padding(.bottom,10)
 
             HStack() {
                 Text("\(Int(plunge.temperature))°c")
@@ -82,6 +99,7 @@ struct CardView: View {
         .background(Color.clear)
     }
 }
+
 
 
 private let dateFormatter: DateFormatter = {

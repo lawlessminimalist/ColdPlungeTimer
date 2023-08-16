@@ -1,8 +1,12 @@
 import SwiftUI
+import AVFoundation
+
 
 struct CompletedPlungeView: View {
     @Binding public var path:[String]
     @Binding public var session:PlungeSession
+    @Binding public var selectedSound:Int
+    
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
@@ -82,13 +86,19 @@ struct CompletedPlungeView: View {
                         }
             .padding(.top, 40)
         }
+        .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
+            AudioServicesPlaySystemSound(SystemSoundID(selectedSound))
+        })
+
         .padding()
 
     }
+    
 }
 
 struct CompletedPlungeView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedPlungeView(path: .constant(["testing"]),session: .constant(PlungeSession(minutes: 1, seconds: 1, temperature: 1)))
+        CompletedPlungeView(path: .constant(["testing"]),session: .constant(PlungeSession(minutes: 1, seconds: 1, temperature: 1)),selectedSound: .constant(1320))
     }
 }

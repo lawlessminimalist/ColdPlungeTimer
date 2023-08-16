@@ -29,7 +29,7 @@ struct ContentView: View {
                     Image(systemName: "list.bullet")
                 }
                 .tag(0)
-            HomeScreen(inNestedView: $inNestedView)
+            HomeScreen(inNestedView: $inNestedView,selectedSound: 1320)
                 .tabItem {
                     Image(systemName: "house")
                 }

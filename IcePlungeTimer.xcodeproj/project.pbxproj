@@ -25,6 +25,7 @@
 		9E0D11C12A1994A900C1FD77 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0D11C02A1994A900C1FD77 /* CloudKit.framework */; };
 		9E0D11C62A19FD0500C1FD77 /* PlungeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */; };
 		9E62EF6C2A0CD35B0098E658 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */; };
+		9E7663F72A47A9BC008D1736 /* SoundListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */; };
 		9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0A2A369885000947B2 /* PlungeSession.swift */; };
 		9EBB1B0D2A369E52000947B2 /* CompletedPlungeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		9E0D11C02A1994A900C1FD77 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeList.swift; sourceTree = "<group>"; };
 		9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundListWidget.swift; sourceTree = "<group>"; };
 		9EBB1B0A2A369885000947B2 /* PlungeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeSession.swift; sourceTree = "<group>"; };
 		9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPlungeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */,
+				9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E0D11BA2A1989FF00C1FD77 /* CoreDataStack.swift in Sources */,
+				9E7663F72A47A9BC008D1736 /* SoundListWidget.swift in Sources */,
 				6991EED229FA1BD60021B752 /* TimerInitView.swift in Sources */,
 				6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */,
 				9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */,
