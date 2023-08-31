@@ -73,9 +73,9 @@ struct HomeScreen: View {
                         TimerInitView(path: $path, inNestedView: $inNestedView,selectedSound:$selectedSound)
                             .toolbar(.hidden, for: .tabBar)
                     case "Plunge":
-                        PlungeTimerView(path: $path, inNestedView: $inNestedView, session: $plungeSession)
+                        PlungeTimerView(path: $path, inNestedView: $inNestedView, session: $plungeSession,selectedSound: $selectedSound)
                     case "PlungeComplete":
-                        CompletedPlungeView(path: $path, session: $plungeSession,selectedSound: $selectedSound)
+                        CompletedPlungeView(path: $path, session: $plungeSession)
                     default:
                         Text("Unknown destination")
                     }
