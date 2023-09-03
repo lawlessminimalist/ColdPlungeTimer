@@ -23,9 +23,12 @@
 		9E0D11BA2A1989FF00C1FD77 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11B92A1989FF00C1FD77 /* CoreDataStack.swift */; };
 		9E0D11BD2A19901200C1FD77 /* PlungeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11BB2A19901200C1FD77 /* PlungeData.xcdatamodeld */; };
 		9E0D11C12A1994A900C1FD77 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0D11C02A1994A900C1FD77 /* CloudKit.framework */; };
-		9E0D11C62A19FD0500C1FD77 /* PlungeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */; };
+		9E0D11C62A19FD0500C1FD77 /* PlungeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */; };
 		9E62EF6C2A0CD35B0098E658 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */; };
 		9E7663F72A47A9BC008D1736 /* SoundListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */; };
+		9E848A3C2AA4054B00B88E96 /* testingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A3B2AA4054B00B88E96 /* testingView.swift */; };
+		9E848A3E2AA4537B00B88E96 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A3D2AA4537B00B88E96 /* Protocols.swift */; };
+		9E848A412AA453CB00B88E96 /* StartPlunge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A402AA453CB00B88E96 /* StartPlunge.swift */; };
 		9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0A2A369885000947B2 /* PlungeSession.swift */; };
 		9EBB1B0D2A369E52000947B2 /* CompletedPlungeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */; };
 /* End PBXBuildFile section */
@@ -68,9 +71,12 @@
 		9E0D11BC2A19901200C1FD77 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9E0D11BE2A19949800C1FD77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9E0D11C02A1994A900C1FD77 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeList.swift; sourceTree = "<group>"; };
+		9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeListView.swift; sourceTree = "<group>"; };
 		9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundListWidget.swift; sourceTree = "<group>"; };
+		9E848A3B2AA4054B00B88E96 /* testingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testingView.swift; sourceTree = "<group>"; };
+		9E848A3D2AA4537B00B88E96 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		9E848A402AA453CB00B88E96 /* StartPlunge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPlunge.swift; sourceTree = "<group>"; };
 		9EBB1B0A2A369885000947B2 /* PlungeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeSession.swift; sourceTree = "<group>"; };
 		9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPlungeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +139,7 @@
 		695FFFB229F4DE750054534E /* IcePlungeTimer */ = {
 			isa = PBXGroup;
 			children = (
+				9E848A422AA4658400B88E96 /* Data */,
 				9E0D11BE2A19949800C1FD77 /* Info.plist */,
 				695FFFB329F4DE750054534E /* IcePlungeTimerApp.swift */,
 				6991EEBB29F938760021B752 /* Models */,
@@ -171,6 +178,9 @@
 		6991EEBA29F938560021B752 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6991EEC829F9E49C0021B752 /* Iceberg */,
+				6929FC8929FBB87A00F1A06D /* Timers */,
+				9E0D11C42A19FCEE00C1FD77 /* Lists */,
 				9E0D11C72A1A2B8F00C1FD77 /* Widgets */,
 				6991EECE29FA1B970021B752 /* Screens */,
 				695FFFB529F4DE750054534E /* ContentView.swift */,
@@ -183,8 +193,8 @@
 			children = (
 				6991EED329FA20590021B752 /* TimerModel.swift */,
 				9E0D11B92A1989FF00C1FD77 /* CoreDataStack.swift */,
-				9E0D11BB2A19901200C1FD77 /* PlungeData.xcdatamodeld */,
 				9EBB1B0A2A369885000947B2 /* PlungeSession.swift */,
+				9E848A3D2AA4537B00B88E96 /* Protocols.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,10 +211,10 @@
 		6991EECE29FA1B970021B752 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9E848A392AA3EEDA00B88E96 /* Plunge Timer Flow */,
 				9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */,
-				6991EED129FA1BD60021B752 /* TimerInitView.swift */,
-				6991EECB29FA14190021B752 /* PlungeTimerView.swift */,
-				9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */,
+				9E848A3B2AA4054B00B88E96 /* testingView.swift */,
+				9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -220,7 +230,6 @@
 		9E0D11C42A19FCEE00C1FD77 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
-				9E0D11C52A19FD0500C1FD77 /* PlungeList.swift */,
 				9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */,
 			);
 			path = Lists;
@@ -229,11 +238,43 @@
 		9E0D11C72A1A2B8F00C1FD77 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				6991EEC829F9E49C0021B752 /* Iceberg */,
-				6929FC8929FBB87A00F1A06D /* Timers */,
-				9E0D11C42A19FCEE00C1FD77 /* Lists */,
+				9E848A3F2AA453A000B88E96 /* Core */,
+				9E848A3A2AA3EF6C00B88E96 /* Goals */,
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		9E848A392AA3EEDA00B88E96 /* Plunge Timer Flow */ = {
+			isa = PBXGroup;
+			children = (
+				6991EED129FA1BD60021B752 /* TimerInitView.swift */,
+				6991EECB29FA14190021B752 /* PlungeTimerView.swift */,
+				9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */,
+			);
+			path = "Plunge Timer Flow";
+			sourceTree = "<group>";
+		};
+		9E848A3A2AA3EF6C00B88E96 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		9E848A3F2AA453A000B88E96 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9E848A402AA453CB00B88E96 /* StartPlunge.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9E848A422AA4658400B88E96 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9E0D11BB2A19901200C1FD77 /* PlungeData.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,15 +412,18 @@
 				6991EED229FA1BD60021B752 /* TimerInitView.swift in Sources */,
 				6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */,
 				9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */,
+				9E848A3C2AA4054B00B88E96 /* testingView.swift in Sources */,
 				6929FC8B29FBB89A00F1A06D /* TimerView.swift in Sources */,
 				6991EECC29FA14190021B752 /* PlungeTimerView.swift in Sources */,
 				695FFFB629F4DE750054534E /* ContentView.swift in Sources */,
-				9E0D11C62A19FD0500C1FD77 /* PlungeList.swift in Sources */,
+				9E848A412AA453CB00B88E96 /* StartPlunge.swift in Sources */,
+				9E0D11C62A19FD0500C1FD77 /* PlungeListView.swift in Sources */,
 				9E62EF6C2A0CD35B0098E658 /* HomeScreen.swift in Sources */,
 				6991EED429FA20590021B752 /* TimerModel.swift in Sources */,
 				9E0D11BD2A19901200C1FD77 /* PlungeData.xcdatamodeld in Sources */,
 				695FFFB429F4DE750054534E /* IcePlungeTimerApp.swift in Sources */,
 				6991EECA29F9E4BC0021B752 /* CosineWaveLineView.swift in Sources */,
+				9E848A3E2AA4537B00B88E96 /* Protocols.swift in Sources */,
 				9EBB1B0D2A369E52000947B2 /* CompletedPlungeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,11 +588,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IcePlungeTimer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cold Plunge Timer ";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,11 +621,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IcePlungeTimer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cold Plunge Timer ";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -60,6 +60,7 @@ struct TimerInitView: View {
             } ).padding()}
         
             .onAppear(){
+
                 //Hide the bottom tool bar
                 inNestedView = true
             }

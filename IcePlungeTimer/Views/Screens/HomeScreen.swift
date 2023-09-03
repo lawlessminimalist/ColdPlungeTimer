@@ -6,7 +6,6 @@ struct HomeScreen: View {
     @State public var plungeSession:PlungeSession = PlungeSession()
     @State public var selectedSound:Int
 
-    @State private var date = Date()
     @State private var offsetY = CGFloat(0.0)
     @State private var phase: CGFloat = 0.1
     @State private var path: [String] = []
@@ -22,20 +21,6 @@ struct HomeScreen: View {
                 .overlay(
             NavigationStack(path: $path) {
                 VStack{
-                    DatePicker(
-                        "Start Date",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
-                    .datePickerStyle(.graphical)
-                    .background(Color.clear) // Add a transparent background
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10) // Overlay with rounded rectangle
-                            .stroke(borderColor, lineWidth: 2) // Add border
-                    )
-                    .frame(width: 300)
-                    .padding()
-                    
                     Image("iceberg")
                         .resizable()
                         .clipShape(Circle())  // Enclose the view in a circle

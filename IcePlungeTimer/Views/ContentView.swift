@@ -15,6 +15,8 @@ struct SettingsView: View {
 
 
 struct ContentView: View {
+    @State private var orientation: UIDeviceOrientation = UIDeviceOrientation.portrait
+
     @State private var selectedTab = 1
     @State private var inNestedView = false
     
@@ -35,15 +37,15 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            SettingsView()
+            testingView()
                 .tabItem {
                     Image(systemName: "gear")
                 }
                 .tag(2)
         }
         .toolbar(inNestedView ? .visible : .hidden)
-
     }
+
 }
 
 
