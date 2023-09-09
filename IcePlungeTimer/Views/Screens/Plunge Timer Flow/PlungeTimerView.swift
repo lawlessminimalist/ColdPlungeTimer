@@ -101,8 +101,10 @@ struct PlungeTimerView: View {
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Timer Finished"),
                   message: Text("Your plunge has completed."),
-                  dismissButton: .default(Text("Finish")) {
+                  dismissButton:
+                    .default(Text("Finish")) {
                       self.isPlayingAlertSound = false
+                      self.showAlert = false
                       path.append("PlungeComplete")
                   })
         }

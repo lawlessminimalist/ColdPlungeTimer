@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var selectedTab = 1
     @State private var inNestedView = false
     
+    @State private var isCelsius = true
+    
     init() {
         UITabBar.appearance().isHidden = inNestedView
     }
@@ -30,7 +32,7 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            SettingsView()
+            SettingsView(isCelsius:$isCelsius)
                 .tabItem {
                     Image(systemName: "gear")
                 }

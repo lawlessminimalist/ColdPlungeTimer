@@ -178,9 +178,6 @@
 		6991EEBA29F938560021B752 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6991EEC829F9E49C0021B752 /* Iceberg */,
-				6929FC8929FBB87A00F1A06D /* Timers */,
-				9E0D11C42A19FCEE00C1FD77 /* Lists */,
 				9E0D11C72A1A2B8F00C1FD77 /* Widgets */,
 				6991EECE29FA1B970021B752 /* Screens */,
 				695FFFB529F4DE750054534E /* ContentView.swift */,
@@ -238,6 +235,9 @@
 		9E0D11C72A1A2B8F00C1FD77 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				9E0D11C42A19FCEE00C1FD77 /* Lists */,
+				6929FC8929FBB87A00F1A06D /* Timers */,
+				6991EEC829F9E49C0021B752 /* Iceberg */,
 				9E848A3F2AA453A000B88E96 /* Core */,
 				9E848A3A2AA3EF6C00B88E96 /* Goals */,
 			);
