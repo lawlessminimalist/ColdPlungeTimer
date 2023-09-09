@@ -32,7 +32,7 @@ struct CompletedPlungeView: View {
                 VStack {
                     Image(systemName: "clock")
                         .font(.system(size: 30))
-                    Text("\(session.minutes)m \(session.seconds)s")
+                    Text("\(session.minutes)m \(session.seconds%60)s")
                         .font(.system(size: 14))
                 }
                 

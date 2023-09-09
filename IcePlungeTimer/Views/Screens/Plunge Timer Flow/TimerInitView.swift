@@ -31,6 +31,7 @@ struct TimerInitView: View {
                 .frame(width: width)
                 .animation(.easeInOut,value: timerModel.seconds)
             Text("Quick Select")
+                .padding(EdgeInsets(top: 0, leading: 0, bottom:0.1, trailing: 0))
             HStack{
                 Button("1 min") {
                     timerModel.quickSet(mins: 1.0)
@@ -51,11 +52,12 @@ struct TimerInitView: View {
             }, label: {
                 Text("Start")
                     .font(.headline)
+                    .padding(.horizontal, 30)
                     .foregroundColor(.white)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.blue.opacity(0.7))
+                            .fill(Color.yellow)
                     )
             } ).padding()}
         

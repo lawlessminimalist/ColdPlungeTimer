@@ -63,7 +63,7 @@ struct PlungeTimerView: View {
                     Text("Tap twice to exit the plunge")
                         .transition(.opacity)
                         .font(.system(size:20))
-                        .foregroundColor(showText ? .black : .gray)
+                        .foregroundColor(showText ? .yellow : .gray)
                 TimerView()
             }
             .onAppear(perform:{
@@ -122,7 +122,10 @@ struct PlungeTimerView: View {
                     } else if tapCount == 2 {
                         cancelled = true
                         // TODO: add temperature setting
-                        session = PlungeSession(minutes: timerModel.minutesElapsed, seconds: timerModel.secondsElapsed, temperature: 4)
+                        session = PlungeSession(
+                            minutes: timerModel.minutesElapsed,
+                            seconds: timerModel.secondsElapsed, temperature: 4
+                        )
                         path.append("PlungeComplete")
                     }
                 })

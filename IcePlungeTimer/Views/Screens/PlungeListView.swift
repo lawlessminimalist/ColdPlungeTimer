@@ -80,12 +80,9 @@ struct CardView: View {
                 Text("\(Int(plunge.temperature))°c")
                     .font(.headline)
                     .padding(.horizontal, 10)
-                Text("\(plunge.minutes)m\(plunge.seconds)s")
+                Text("\(plunge.minutes)m\(plunge.seconds%60)s")
                     .font(.headline)
                     .padding(.horizontal, 10)
-                
-                Text("\(Int(plunge.caloricBurn))cal")
-                    .font(.headline)
             }
         }
         .frame(height: 100)

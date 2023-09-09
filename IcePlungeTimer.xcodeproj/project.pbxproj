@@ -26,11 +26,11 @@
 		9E0D11C62A19FD0500C1FD77 /* PlungeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */; };
 		9E62EF6C2A0CD35B0098E658 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */; };
 		9E7663F72A47A9BC008D1736 /* SoundListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */; };
-		9E848A3C2AA4054B00B88E96 /* testingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A3B2AA4054B00B88E96 /* testingView.swift */; };
 		9E848A3E2AA4537B00B88E96 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A3D2AA4537B00B88E96 /* Protocols.swift */; };
 		9E848A412AA453CB00B88E96 /* StartPlunge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E848A402AA453CB00B88E96 /* StartPlunge.swift */; };
 		9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0A2A369885000947B2 /* PlungeSession.swift */; };
 		9EBB1B0D2A369E52000947B2 /* CompletedPlungeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */; };
+		9EC4C8362AAC4D2E0042EEC8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC4C8352AAC4D2E0042EEC8 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,11 +74,11 @@
 		9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeListView.swift; sourceTree = "<group>"; };
 		9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		9E7663F62A47A9BC008D1736 /* SoundListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundListWidget.swift; sourceTree = "<group>"; };
-		9E848A3B2AA4054B00B88E96 /* testingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testingView.swift; sourceTree = "<group>"; };
 		9E848A3D2AA4537B00B88E96 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		9E848A402AA453CB00B88E96 /* StartPlunge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPlunge.swift; sourceTree = "<group>"; };
 		9EBB1B0A2A369885000947B2 /* PlungeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlungeSession.swift; sourceTree = "<group>"; };
 		9EBB1B0C2A369E52000947B2 /* CompletedPlungeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPlungeView.swift; sourceTree = "<group>"; };
+		9EC4C8352AAC4D2E0042EEC8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,8 +213,8 @@
 			children = (
 				9E848A392AA3EEDA00B88E96 /* Plunge Timer Flow */,
 				9E62EF6B2A0CD35B0098E658 /* HomeScreen.swift */,
-				9E848A3B2AA4054B00B88E96 /* testingView.swift */,
 				9E0D11C52A19FD0500C1FD77 /* PlungeListView.swift */,
+				9EC4C8352AAC4D2E0042EEC8 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -410,9 +410,9 @@
 				9E0D11BA2A1989FF00C1FD77 /* CoreDataStack.swift in Sources */,
 				9E7663F72A47A9BC008D1736 /* SoundListWidget.swift in Sources */,
 				6991EED229FA1BD60021B752 /* TimerInitView.swift in Sources */,
+				9EC4C8362AAC4D2E0042EEC8 /* SettingsView.swift in Sources */,
 				6991EEBF29F939120021B752 /* IcebergDynamicView.swift in Sources */,
 				9EBB1B0B2A369885000947B2 /* PlungeSession.swift in Sources */,
-				9E848A3C2AA4054B00B88E96 /* testingView.swift in Sources */,
 				6929FC8B29FBB89A00F1A06D /* TimerView.swift in Sources */,
 				6991EECC29FA14190021B752 /* PlungeTimerView.swift in Sources */,
 				695FFFB629F4DE750054534E /* ContentView.swift in Sources */,
@@ -599,7 +599,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PushLimitsStudio.IcePlungeTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = LawlessStudios.IcePlungeTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -632,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PushLimitsStudio.IcePlungeTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = LawlessStudios.IcePlungeTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
