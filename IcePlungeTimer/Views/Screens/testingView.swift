@@ -55,6 +55,7 @@ struct DraggableGridView: View {
             }
         }
         .padding()
+        
     }
 }
 
