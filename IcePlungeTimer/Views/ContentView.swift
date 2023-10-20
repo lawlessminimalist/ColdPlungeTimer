@@ -21,18 +21,18 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            PlungeListView()
+            PlungeListView(isCelsius: $isCelsius)
                 .tabItem {
                     Image(systemName: "list.bullet")
                 }
                 .tag(0)
-            HomeScreen(inNestedView: $inNestedView,selectedSound: 1320)
+            HomeScreen(inNestedView: $inNestedView,isCelius: $isCelsius)
                 .tabItem {
                     Image(systemName: "house")
                 }
                 .tag(1)
             
-            SettingsView(isCelsius:$isCelsius)
+            SettingsView(isCelsius: $isCelsius)
                 .tabItem {
                     Image(systemName: "gear")
                 }

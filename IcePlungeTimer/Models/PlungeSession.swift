@@ -10,16 +10,30 @@ import Foundation
 class PlungeSession: ObservableObject {
     @Published var minutes: Int
     @Published var seconds: Int
-    @Published var temperature: Float
+    @Published var celsius: Float
+    @Published var farenheight: Float
     @Published var kcaloricBurn:Int
 
 
-    init(minutes: Int,seconds: Int,temperature: Float) {
+    init(minutes: Int,seconds: Int,celsius: Float) {
         self.minutes = minutes
         self.seconds = seconds
-        self.temperature = temperature
+        self.celsius = celsius
+        self.farenheight = (celsius * (9/5)) + 32
         self.kcaloricBurn = PlungeSession.calculateCaloricBurn(
-            tempCelsius:temperature,
+            tempCelsius:celsius,
+            minutes: minutes,
+            seconds: seconds
+        )
+    }
+    
+    init(minutes: Int,seconds: Int,farenheight: Float) {
+        self.minutes = minutes
+        self.seconds = seconds
+        self.celsius = (farenheight - 32) * (5/9)
+        self.farenheight = farenheight
+        self.kcaloricBurn = PlungeSession.calculateCaloricBurn(
+            tempCelsius: (farenheight - 32) * (5/9),
             minutes: minutes,
             seconds: seconds
         )
@@ -29,7 +43,8 @@ class PlungeSession: ObservableObject {
     init() {
         self.minutes = 0
         self.seconds = 0
-        self.temperature = 0.0
+        self.celsius = 0.0
+        self.farenheight = 0.0
         self.kcaloricBurn = 0
     }
     

@@ -8,6 +8,7 @@ struct PlungeListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Plunge.date, ascending: false)],
         animation: .default)
     private var plunges: FetchedResults<Plunge>
+    @Binding public var isCelsius:Bool
 
     private var groupedPlunges: [Date: [Plunge]] {
         Dictionary(grouping: plunges, by: { (plunge: Plunge) -> Date in
@@ -23,7 +24,7 @@ struct PlungeListView: View {
                 
                 Section(header: Text(dateFormatter.string(from: key))) {
                     ForEach(groupedPlunges[key]!, id: \.self) { plunge in
-                        CardView(plunge: plunge)
+                        CardView(isCelsius: $isCelsius, plunge: plunge)
                     }
                     .onDelete(perform: { indexSet in
                         deletePlunge(from: key, at: indexSet)
@@ -58,6 +59,8 @@ private let smallDateFormatter: DateFormatter = {
 
 
 struct CardView: View {
+    @Binding public var isCelsius:Bool
+
     var plunge: Plunge
     
     var body: some View {
@@ -77,9 +80,17 @@ struct CardView: View {
             .padding(.bottom, 10)
             
             HStack() {
-                Text("\(Int(plunge.temperature))°c")
-                    .font(.headline)
-                    .padding(.horizontal, 10)
+                if(isCelsius){
+                    Text("\(Int(plunge.celsius))°c")
+                        .font(.headline)
+                        .padding(.horizontal, 10)
+                }
+                else{
+                    Text("\(Int(plunge.farenheight))°c")
+                        .font(.headline)
+                        .padding(.horizontal, 10)
+                }
+
                 Text("\(plunge.minutes)m\(plunge.seconds%60)s")
                     .font(.headline)
                     .padding(.horizontal, 10)

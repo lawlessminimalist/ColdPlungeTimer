@@ -45,9 +45,10 @@ class CoreDataStack {
         return []
     }
     
-    func savePlunge(minutes: Int,seconds:Int,temperature: Float, caloricBurn:Int, context: NSManagedObjectContext) {
+    func savePlunge(minutes: Int,seconds:Int,celsius:Float,farenheight:Float, caloricBurn:Int, context: NSManagedObjectContext) {
         let newPlunge = Plunge(context: context)
-        newPlunge.temperature = temperature
+        newPlunge.farenheight = farenheight
+        newPlunge.celsius = celsius
         newPlunge.date = Date()
         newPlunge.caloricBurn = Int32(caloricBurn)
         newPlunge.minutes = Int32(minutes)

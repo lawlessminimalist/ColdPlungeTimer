@@ -14,8 +14,6 @@ struct TimerInitView: View {
     @Binding var inNestedView:Bool
     
     @State var inTimer = false
-    
-    @Binding var selectedSound:Int
 
     
     private let width: Double = 250
@@ -45,8 +43,6 @@ struct TimerInitView: View {
                 Button("5 min") {
                     timerModel.quickSet(mins: 5.0)
                 }}
-            SoundListWidget(selectedSoundId: $selectedSound)
-                .padding()
             Button(action: {
                 path.append("Plunge")
             }, label: {
@@ -77,7 +73,7 @@ struct TimerInitView_Previews: PreviewProvider {
     
     static var previews: some View {
 
-        TimerInitView(path: .constant(["Home"]),inNestedView: .constant(true),selectedSound: .constant(1320))
+        TimerInitView(path: .constant(["Home"]),inNestedView: .constant(true))
             .environmentObject(timerModel)
     }
 }

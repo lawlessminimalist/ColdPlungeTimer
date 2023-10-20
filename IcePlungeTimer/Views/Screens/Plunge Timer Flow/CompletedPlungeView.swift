@@ -5,6 +5,7 @@ import AVFoundation
 struct CompletedPlungeView: View {
     @Binding public var path:[String]
     @Binding public var session:PlungeSession
+    @Binding public var isCelsius:Bool;
     
     
     
@@ -39,24 +40,24 @@ struct CompletedPlungeView: View {
                 VStack {
                     Image(systemName: "thermometer")
                         .font(.system(size: 30))
-                    Text("\(Int(session.temperature))°C")
-                        .font(.system(size: 14))
-                }
-                
-                VStack {
-                    Image(systemName: "flame")
-                        .font(.system(size: 30))
-                    Text("\(session.kcaloricBurn)cal")
-                        .font(.system(size: 14))
+                    if(isCelsius){
+                        Text("\(Int(session.celsius))°C")
+                            .font(.system(size: 14))
+                    }
+                    else{
+                        Text("\(Int(session.farenheight))°F")
+                            .font(.system(size: 14))
+                    }
+
                 }
             }
             HStack(spacing: 30) {
                             Button(action: {
-
                                 CoreDataStack.shared.savePlunge(
                                     minutes: session.minutes,
                                     seconds: session.seconds,
-                                    temperature: session.temperature,
+                                    celsius: session.celsius,
+                                    farenheight:session.farenheight,
                                     caloricBurn: session.kcaloricBurn,
                                     context: viewContext
                                 )
@@ -98,6 +99,7 @@ struct CompletedPlungeView: View {
 
 struct CompletedPlungeView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedPlungeView(path: .constant(["testing"]),session: .constant(PlungeSession(minutes: 1, seconds: 1, temperature: 1)))
+        CompletedPlungeView(path: .constant(["testing"]),session: .constant(PlungeSession(minutes: 1, seconds: 1, celsius: 4)),isCelsius: .constant(true)
+        )
     }
 }
