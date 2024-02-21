@@ -9,7 +9,7 @@ import SwiftUI
 import UserNotifications
 
 @main
-struct IcePlungeTimerApp: App {
+struct IcePlungewTimerApp: App {
     @StateObject private var timerModel = TimerModel()
     let context = CoreDataStack.shared.persistentContainer.viewContext
 

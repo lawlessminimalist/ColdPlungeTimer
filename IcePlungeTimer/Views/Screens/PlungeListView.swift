@@ -20,17 +20,22 @@ struct PlungeListView: View {
     
     var body: some View {
         List {
-            ForEach(groupedPlunges.keys.sorted(by: >), id: \.self) { key in
-                
-                Section(header: Text(dateFormatter.string(from: key))) {
-                    ForEach(groupedPlunges[key]!, id: \.self) { plunge in
-                        CardView(isCelsius: $isCelsius, plunge: plunge)
+            if(groupedPlunges.count == 0){
+                EmpttyCardView()
+            }
+            else{
+                ForEach(groupedPlunges.keys.sorted(by: >), id: \.self) { key in
+                    Section(header: Text(dateFormatter.string(from: key))) {
+                        ForEach(groupedPlunges[key]!, id: \.self) { plunge in
+                            CardView(isCelsius: $isCelsius, plunge: plunge)
+                        }
+                        .onDelete(perform: { indexSet in
+                            deletePlunge(from: key, at: indexSet)
+                        })
                     }
-                    .onDelete(perform: { indexSet in
-                        deletePlunge(from: key, at: indexSet)
-                    })
                 }
             }
+            
         }
     }
     
@@ -81,12 +86,12 @@ struct CardView: View {
             
             HStack() {
                 if(isCelsius){
-                    Text("\(Int(plunge.celsius))°c")
+                    Text("\(Int(plunge.celsius))°C")
                         .font(.headline)
                         .padding(.horizontal, 10)
                 }
                 else{
-                    Text("\(Int(plunge.farenheight))°c")
+                    Text("\(Int(plunge.farenheight))°F")
                         .font(.headline)
                         .padding(.horizontal, 10)
                 }
@@ -100,3 +105,10 @@ struct CardView: View {
         .background(Color.clear)
     }
 }
+
+struct EmpttyCardView: View {
+    var body: some View {
+        Text("Nothing to see here! Get plunging")
+    }
+}
+

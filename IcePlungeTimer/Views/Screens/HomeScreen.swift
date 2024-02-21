@@ -9,6 +9,7 @@ struct HomeScreen: View {
     @State private var offsetY = CGFloat(0.0)
     @State private var phase: CGFloat = 0.1
     @State private var path: [String] = []
+    @State private var selectedTemp: Int = 10
     
     
     private let parentBackgroundColor = Color.white  // Define parent background color
@@ -54,7 +55,7 @@ struct HomeScreen: View {
                 .navigationDestination(for: String.self) { str in
                     switch str {
                     case "Init":
-                        TimerInitView(path: $path, inNestedView: $inNestedView)
+                        TimerInitView(selectedTemp: selectedTemp,path: $path, inNestedView: $inNestedView)
                             .toolbar(.hidden, for: .tabBar)
                     case "Plunge":
                         PlungeTimerView(isCelsius: $isCelius, path: $path, inNestedView: $inNestedView, session: $plungeSession)
